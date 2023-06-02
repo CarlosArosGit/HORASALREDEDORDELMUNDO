@@ -1,11 +1,14 @@
 const horaNow = (offset) => {
   let hoy = new Date();
-  let h = Number(hoy.getHours()) + Number(offset);
-  let hora = `${h}:${hoy.getMinutes()}:${hoy.getSeconds()}`;
+  let utc = hoy.getTime() + (hoy.getTimezoneOffset() * 60000);
+  let nd = new Date(utc + (3600000*offset));
+  let h = (nd.getHours()<10?'0':'') + nd.getHours();
+  let m = (nd.getMinutes()<10?'0':'') + nd.getMinutes();
+  let hora = `${h}:${m}:${nd.getSeconds()}`;
   return hora;
 }
 const horaChile = () => {
-  let offset = 0;
+  let offset = -4;
   let hora = horaNow(offset);
   document.getElementById('chile').innerText = hora;
   setInterval(horaChile, 1000);
@@ -24,7 +27,7 @@ const horaLondres = () => {
   setInterval(horaLondres, 1000);
 }
 const horaNY = () => {
-  let offset = -5;
+  let offset = -4;
   let hora = horaNow(offset);
   document.getElementById('ny').innerText = hora;
   setInterval(horaNY, 1000);
