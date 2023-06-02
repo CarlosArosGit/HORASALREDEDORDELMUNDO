@@ -1,0 +1,19 @@
+.bloque {
+    border: 0.5px solid gray;
+}
+
+.hora {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.contenedor {
+    width: 21%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.img {
+    display: flex;
+    align-items: center;
+}
